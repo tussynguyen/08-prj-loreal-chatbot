@@ -19,12 +19,95 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
+        <div class="gold-ring ring-1"></div>
+        <div class="gold-ring ring-2"></div>
+        <div class="gold-ring ring-3"></div>
+        <img
+          src="img/Logo_Loreal_MMCv2_white.png"
+          alt="L'Oréal Logo"
+          class="site-logo"
+        />
         <h1 class="site-title">Smart Product Advisor</h1>
       </header>
 
       <!------- Chat Area ------->
       <main>
-        <section class="chatbox">
+        <!-- Face Selection Interface -->
+        <section id="faceSelection" class="face-selection">
+          <h2 class="selection-title">What area would you like to focus on?</h2>
+          <p class="selection-subtitle">
+            Click on the area of your face you'd like to improve
+          </p>
+
+          <div class="face-map-container">
+            <div class="face-outline">
+              <!-- Clickable face areas -->
+              <button
+                class="face-area forehead"
+                data-area="forehead"
+                title="Forehead"
+              >
+                <span class="area-label">Forehead</span>
+              </button>
+
+              <button class="face-area eyes" data-area="eyes" title="Eye Area">
+                <span class="area-label">Eyes</span>
+              </button>
+
+              <button class="face-area nose" data-area="nose" title="Nose">
+                <span class="area-label">Nose</span>
+              </button>
+
+              <button
+                class="face-area cheeks left-cheek"
+                data-area="cheeks"
+                title="Cheeks"
+              >
+                <span class="area-label">Cheeks</span>
+              </button>
+
+              <button
+                class="face-area cheeks right-cheek"
+                data-area="cheeks"
+                title="Cheeks"
+              >
+                <span class="area-label">Cheeks</span>
+              </button>
+
+              <button class="face-area lips" data-area="lips" title="Lips">
+                <span class="area-label">Lips</span>
+              </button>
+
+              <button class="face-area chin" data-area="chin" title="Chin">
+                <span class="area-label">Chin</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="alternative-options">
+            <p>Or tell us about your skin concerns:</p>
+            <button class="concern-btn" data-concern="acne">Acne</button>
+            <button class="concern-btn" data-concern="aging">Anti-Aging</button>
+            <button class="concern-btn" data-concern="dryness">Dry Skin</button>
+            <button class="concern-btn" data-concern="oily">Oily Skin</button>
+            <button class="concern-btn" data-concern="sensitive">
+              Sensitive Skin
+            </button>
+          </div>
+        </section>
+
+        <!-- Chat Interface (initially hidden) -->
+        <section id="chatInterface" class="chatbox" style="display: none">
+          <!-- User's Current Question Display -->
+          <div
+            id="currentQuestion"
+            class="current-question"
+            style="display: none"
+          >
+            <div class="question-label">Your Question:</div>
+            <div id="questionText" class="question-text"></div>
+          </div>
+
           <div id="chatWindow" class="chat-window">
             <!-- messages will be appended here via JS -->
           </div>
@@ -44,12 +127,17 @@
               <span class="visually-hidden">Send</span>
             </button>
           </form>
+
+          <button id="backToSelection" class="back-btn">
+            <span class="material-icons">arrow_back</span>
+            Choose Different Area
+          </button>
         </section>
       </main>
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
+        <p>&copy; 2025 L'Oréal. All rights reserved.</p>
         <nav>
           <!-- These URLs are placeholders -->
           <a href="#">Privacy Policy</a>
@@ -59,8 +147,7 @@
       </footer>
     </div>
 
-    <!-- secrets.js can be removed when using Cloudflare Workers for API requests -->
-    <script src="secrets.js"></script>
+    <!-- Cloudflare Worker handles API keys securely, no need to expose them client-side -->
     <script src="script.js"></script>
   </body>
 </html>
